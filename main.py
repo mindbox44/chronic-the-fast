@@ -253,7 +253,8 @@ chronic = sprites.create(img("""
 chronic.set_position(20, 175)
 controller.move_sprite(chronic, 200, 0)
 scene.camera_follow_sprite(chronic)
-info.player1.set_life(3)
+info.player1.set_life(2)
+info.set_score(0)
 chronic.ay = 250
 chronic.set_kind(SpriteKind.player)
 def on_event_pressed():
@@ -553,4 +554,5 @@ sprites.on_destroyed(SpriteKind.projectile, on_destroyed)
 def on_overlap2(sprite, otherSprite):
     milkman.destroy()
     game.splash("You don't suck!")
+    info.change_score_by(100)
 sprites.on_overlap(SpriteKind.player, SpriteKind.enemy, on_overlap2)

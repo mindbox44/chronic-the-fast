@@ -251,7 +251,8 @@ let chronic = sprites.create(img`
 chronic.setPosition(20, 175)
 controller.moveSprite(chronic, 200, 0)
 scene.cameraFollowSprite(chronic)
-info.player1.setLife(3)
+info.player1.setLife(2)
+info.setScore(0)
 chronic.ay = 250
 chronic.setKind(SpriteKind.Player)
 controller.A.onEvent(ControllerButtonEvent.Pressed, function on_event_pressed() {
@@ -549,4 +550,5 @@ sprites.onDestroyed(SpriteKind.Projectile, function on_destroyed(sprite: Sprite)
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function on_overlap2(sprite: Sprite, otherSprite: Sprite) {
     milkman.destroy()
     game.splash("You don't suck!")
+    info.changeScoreBy(100)
 })
